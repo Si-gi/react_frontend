@@ -32,13 +32,13 @@ export default class App extends React.Component {
       password: this.state.password,
     }
     var config = {
-      headers: { 
+      header: { 
         'Content-Type': 'application/x-www-form-urlencoded',
         'Access-Control-Allow-Origin' : '*'
         },
     };
     axios.defaults.adapter = require('axios/lib/adapters/http');
-    axios.post("http://91.166.191.86:49164/login",params)
+    axios.post("127.0.0.1:49164/login",params, config)
       .then(async res =>{
         console.log(res);
         this.setState({loading: false});
