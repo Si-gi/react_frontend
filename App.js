@@ -25,31 +25,39 @@ export default class App extends React.Component {
   }
 
   authenticate=(email,password) => {
-
+console.log("auth");
     this.setState({loading:true,message: ""});
     let params = {
-      email: email,
-      password: this.state.password,
+      "username": email,
+      "password": this.state.password,
     }
     var config = {
       header: { 
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Access-Control-Allow-Origin' : '*'
+        'Access-Control-Allow-Origin' : '*',
+        'Content-Type' : 'application/json',
+        'Accept': '*/*',
+        'Connection' : 'keep-alive',
+        'Authorization' : 'Basic'
         },
     };
     axios.defaults.adapter = require('axios/lib/adapters/http');
-    axios.post("127.0.0.1:49164/login",params, config)
+    axios.withCredentials = true;
+  axios.defaults.auth = params;
+    axios.post("http://91.166.191.86:49164/login_check",params, config)
       .then(async res =>{
-        console.log(res);
         this.setState({loading: false});
         if(!res.data.errors){
           await AsyncStorage.setItem("email", email);
           await AsyncStorage.setItem("password", password);
+          console.log(res.data);
         }else{
+          console.log(res.data.errors);
           this.setState({message: res.data.errors[0]})
         }
       })
       .catch(err => {
+        console.log( err.response.request );
+        console.log(axios);
         this.setState({message: "Connection to server failed, try again later or check your connection", loading: false})
       })
   }
