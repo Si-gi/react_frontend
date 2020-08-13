@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button,AsyncStorag
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import axios from 'axios';
-//import AppNavigator from 'AppNavigator.js';
 import Register from "./components/Register";
 import Login from "./components/Login";
 
@@ -44,7 +43,6 @@ const styles = StyleSheet.create({
     marginBottom:40
   },
   inputView:{
-    width:"80%",
     backgroundColor:"#465881",
     borderRadius:25,
     height:50,
@@ -61,7 +59,6 @@ const styles = StyleSheet.create({
     fontSize:11
   },
   loginBtn:{
-    width:"80%",
     backgroundColor:"#fb5b5a",
     borderRadius:25,
     height:50,

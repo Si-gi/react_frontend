@@ -107,7 +107,6 @@ const styles = StyleSheet.create({
     marginBottom:40
   },
   inputView:{
-    width:"80%",
     backgroundColor:"#465881",
     borderRadius:25,
     height:50,
@@ -124,7 +123,6 @@ const styles = StyleSheet.create({
     fontSize:11
   },
   loginBtn:{
-    width:"80%",
     backgroundColor:"#fb5b5a",
     borderRadius:25,
     height:50,
