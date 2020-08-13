@@ -1,13 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button,AsyncStorage  } from 'react-native';
-//import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import axios from 'axios';
-import AppNavigator from 'AppNavigator';
+//import AppNavigator from 'AppNavigator.js';
 import Register from "./components/Register";
 import Login from "./components/Login";
 
-
+const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <View style={styles.container}>
