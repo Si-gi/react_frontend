@@ -10,7 +10,8 @@ export default class Login extends React.Component {
     email:"",
     password:"",
     loading: false,
-    message : ""
+    message : "",
+    error : false
   }
   componentDidMount(){
     this.login();
@@ -53,11 +54,13 @@ console.log("auth");
           console.log(res.data);
         }else{
           console.log(res.data.errors);
+          this.setState({error: true});
           this.setState({message: res.data.errors[0]})
         }
       })
       .catch(err => {
         console.log( err.response.request );
+        this.setState({error: true});
         this.setState({message: "Connection to server failed, try again later or check your connection", loading: false})
       })
   }
@@ -65,7 +68,9 @@ console.log("auth");
   render(){
     return (
       <View style={styles.container}>
-        <Text style={styles.logo}>HeyAPP</Text>
+        <Text style={styles.logo}>Demo App</Text>
+        {this.state.error ? 
+        <View><Text> {this.state.message} </Text> </View> : null }
         <View style={styles.inputView} >
           <TextInput  
             style={styles.inputText}
