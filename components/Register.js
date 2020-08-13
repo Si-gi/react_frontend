@@ -88,8 +88,8 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#003f5c',
-      //alignItems: 'center',
-      //justifyContent: 'center',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
    
   });
