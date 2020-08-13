@@ -4,7 +4,7 @@ import { StyleSheet, Button, Text, View } from 'react-native';
 export default class Register extends React.Component {
   render() {
     return (
-        <View>
+        <View style={styles.container}>
             <Button
                 title="Back to Login"
                 onPress={() =>
