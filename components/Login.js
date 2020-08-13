@@ -87,17 +87,6 @@ console.log("auth");
         </TouchableOpacity>
         <Button rounded style={styles.loginBtn} onPress={() => this.authenticate(this.state.email,this.state.passwsord)}
         title="Login"/>
-                  <Button
-          title="Add some friends"
-          onPress={() =>
-            this.props.navigation.navigate('Register')
-          }
-        />
-          
-        <TouchableOpacity>
-          <Text style={styles.loginText}>Signup</Text>
-        </TouchableOpacity>
-
   
       </View>
     );
