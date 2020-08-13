@@ -3,11 +3,11 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button,AsyncStorag
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import axios from 'axios';
-import AppNavigator from './AppNavigator';
-import Register from "./Components/Register";
-import Login from "./Components/Login";
+//import AppNavigator from 'AppNavigator.js';
+import Register from "./components/Register";
+import Login from "./components/Login";
 
-
+const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <View style={styles.container}>
