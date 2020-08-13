@@ -26,7 +26,6 @@ export default class Login extends React.Component {
   }
 
   authenticate=(email,password) => {
-console.log("auth");
     this.setState({loading:true,message: ""});
     let params = {
       "username": email,
@@ -50,7 +49,6 @@ console.log("auth");
         if(!res.data.errors){
           await AsyncStorage.setItem("email", email);
           await AsyncStorage.setItem("password", password);
-          console.log(res.data);
         }else{
           console.log(res.data.errors);
           this.setState({message: res.data.errors[0]})
@@ -81,9 +79,6 @@ console.log("auth");
             placeholderTextColor="#003f5c"
             onChangeText={text => this.setState({password:text})}/>
         </View>
-        <TouchableOpacity>
-          <Text style={styles.forgot}>Forgot Password?</Text>
-        </TouchableOpacity>
         <Button rounded style={styles.loginBtn} onPress={() => this.authenticate(this.state.email,this.state.passwsord)}
         title="Login"/>
   
