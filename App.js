@@ -9,7 +9,6 @@ import Login from "./components/Login";
 const Tab = createBottomTabNavigator();
 export default function App() {
   return (
-    <View style={styles.container}>
               <NavigationContainer>
                   <Tab.Navigator
                       tabBarOptions={{
@@ -24,8 +23,7 @@ export default function App() {
                       <Tab.Screen name="Login" component={Login} />
                   </Tab.Navigator>
               </NavigationContainer>
-          </View>
-  );
+            );
 }
 
 
