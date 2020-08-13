@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button,AsyncStorage  } from 'react-native';
 import axios from 'axios';
-//import AppNavigator from './AppNavigator';
 
 
 
