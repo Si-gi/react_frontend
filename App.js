@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button,AsyncStorage  } from 'react-native';
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+//import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import axios from 'axios';
-import AppNavigator from './AppNavigator';
-import Register from "./Components/Register";
-import Login from "./Components/Login";
+import AppNavigator from 'AppNavigator';
+import Register from "./components/Register";
+import Login from "./components/Login";
 
 
 export default function App() {
