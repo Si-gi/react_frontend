@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, TextInput, Button, Text, View } from 'react-native';
-
+import { StyleSheet, TextInput, Button, Text, View, AsyncStorage } from 'react-native';
+import axios from 'axios';
 export default class Register extends React.Component {
     state = {
         email :'',
@@ -16,7 +16,7 @@ export default class Register extends React.Component {
                 this.setState({message: "password are differents"});
                 return;
             }
-            
+            console.log(email);
             let params = {
               "_username": email,
               "_password": this.state.password,
@@ -33,7 +33,7 @@ export default class Register extends React.Component {
             axios.defaults.adapter = require('axios/lib/adapters/http');
             axios.withCredentials = true;
           axios.defaults.auth = params;
-            axios.post("http://91.166.191.86:49164/register",params, config)
+            axios.post("http://91.166.191.86:49164/register?_username="+email+"&_password"+this.state.password,params, config)
               .then(async res =>{
                 this.setState({loading: false});
                 if(!res.data.errors){
@@ -46,7 +46,9 @@ export default class Register extends React.Component {
                 }
               })
               .catch(err => {
-                console.log( err.response.request );
+                //console.log( err.response.request );
+//console.log(err.response);
+console.log(err);
                 this.setState({message: "Connection to server failed, try again later or check your connection", loading: false})
               })
           }
@@ -78,7 +80,7 @@ export default class Register extends React.Component {
             onChangeText={text => this.setState({c_password:text})}/>
         </View>
         <Button rounded style={styles.loginBtn} onPress={() => this.register(this.state.email,this.state.passwsord)}
-        title="Login"/>
+        title="Register"/>
         </View>
     );
   }

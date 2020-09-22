@@ -14,7 +14,7 @@ export default class Login extends React.Component {
     error : false
   }
   componentDidMount(){
-    this.login();
+    //this.login();
   }
 
   login= async ()=>{
@@ -44,12 +44,14 @@ export default class Login extends React.Component {
     axios.defaults.adapter = require('axios/lib/adapters/http');
     axios.withCredentials = true;
   axios.defaults.auth = params;
-    axios.post("http://91.166.191.86:49164/login_check",params, config)
+    axios.post("http://91.166.191.86:49164/login_check", params, config)
       .then(async res =>{
         this.setState({loading: false});
         if(!res.data.errors){
           await AsyncStorage.setItem("email", email);
           await AsyncStorage.setItem("password", password);
+	  await AsyncStorage.setItem("token", res.data.token);
+	console.log(res.data.token);
         }else{
           console.log(res.data.errors);
           this.setState({error: true});
@@ -58,6 +60,7 @@ export default class Login extends React.Component {
       })
       .catch(err => {
         console.log( err.response.request );
+	console.log(err);
         this.setState({error: true});
         this.setState({message: "Connection to server failed, try again later or check your connection", loading: false})
       })
@@ -67,6 +70,7 @@ export default class Login extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.logo}>Demo App</Text>
+	<Text style={styles.forgot}> Site conçu à partir de ReactNative et une api symfony et hébérgé sur un raspberry PI </Text>
         {this.state.error ? 
         <View><Text> {this.state.message} </Text> </View> : null }
         <View style={styles.inputView} >
