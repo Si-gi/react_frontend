@@ -13,13 +13,14 @@ export default class Register extends React.Component {
         console.log("auth");
             this.setState({loading:true,message: ""});
             if(this.state.c_password != this.state.password){
+              console.log("bad password");
                 this.setState({message: "password are differents"});
                 return;
             }
             console.log(email);
             let params = {
               "_username": email,
-              "_password": this.state.password,
+              "_password": password,
             }
             var config = {
               header: { 
@@ -32,6 +33,7 @@ export default class Register extends React.Component {
             };
             axios.defaults.adapter = require('axios/lib/adapters/http');
             axios.withCredentials = true;
+
           axios.defaults.auth = params;
             axios.post("http://91.166.191.86:49164/register?_username="+email+"&_password"+this.state.password,params, config)
               .then(async res =>{
@@ -46,9 +48,7 @@ export default class Register extends React.Component {
                 }
               })
               .catch(err => {
-                //console.log( err.response.request );
-//console.log(err.response);
-console.log(err);
+                console.log( err);
                 this.setState({message: "Connection to server failed, try again later or check your connection", loading: false})
               })
           }
