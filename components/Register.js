@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TextInput, Button, Text, View, AsyncStorage } from 'react-native';
+import { StyleSheet, TextInput, Button, Text, View, AsyncStorage, Redirect } from 'react-native';
 import axios from 'axios';
 export default class Register extends React.Component {
     state = {
@@ -42,6 +42,7 @@ export default class Register extends React.Component {
                   await AsyncStorage.setItem("email", email);
                   await AsyncStorage.setItem("password", password);
                   console.log(res.data);
+                  return  <Redirect  to="/login/" />
                 }else{
                   console.log(res.data.errors);
                   this.setState({message: res.data.errors[0]})

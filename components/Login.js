@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button,AsyncStorage  } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button,AsyncStorage,Redirect  } from 'react-native';
 import axios from 'axios';
 
 
@@ -51,7 +51,8 @@ export default class Login extends React.Component {
           await AsyncStorage.setItem("email", email);
           await AsyncStorage.setItem("password", password);
 	  await AsyncStorage.setItem("token", res.data.token);
-	console.log(res.data.token);
+  console.log(res.data.token);
+  return  <Redirect  to="/profile/" />
         }else{
           console.log(res.data.errors);
           this.setState({error: true});
